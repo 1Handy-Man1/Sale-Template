@@ -27,6 +27,10 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.render('register', { title: "Register"})
 })
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard', { title: "<%- name %>"})
+})
+
 
 // listing port 5000
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
