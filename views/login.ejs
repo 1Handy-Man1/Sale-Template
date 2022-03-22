@@ -1,0 +1,385 @@
+<!-- 
+    prime-color: #3a5698
+    second-color: #E6CC91
+ -->
+
+ <style type="text/css">
+     /* 
+        Below is all CSS for scrollbar
+    */
+    ::-webkit-scrollbar {
+        width: 1.5rem;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #E6CC91; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #FFE3A1;
+    }
+    /*
+        Below is all Navbar CSS.
+    */
+     body {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        background: #3a5698;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50px;
+        background: #FFE3A1;
+        padding: 6px 14px;
+        transition: all .5s ease;
+    }
+    .sidebar.active {
+        width: 240px;
+    }
+    .sidebar .nav_list {
+        padding: 0 0 0 0;
+    }
+    .sidebar .logo_content .logo {
+        color: #6682c4;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .5s ease;
+    }
+    .sidebar.active .logo_content .logo {
+        opacity: 1;
+        pointer-events: none;
+    }
+    .logo_content .logo i {
+        font-size: 28px;
+        margin-right: 5px;
+    }
+    .logo_content .logo .logo_name {
+        font-size: 25px;
+        font-weight: 400;
+    }
+    .sidebar #btn {
+        position: absolute;
+        color: #6682c4;
+        left: 50%;
+        top: 6px;
+        font-size: 25px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+    .sidebar.active #btn {
+        left: 90%;
+    }
+    .sidebar ul {
+        margin-top: 20px;
+    }
+    .sidebar ul li {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin: 0 5px;
+        list-style: none;
+        line-height: 50px;
+    }
+    .sidebar ul li .tooltip {
+        position: absolute;
+        left: 122px;
+        top: 0;
+        transform: translate(-50% , -50%);
+        border-radius: 6px;
+        height: 35px;
+        width: 122px;
+        background: #E6CC91;
+        color: #3a5698;
+        line-height: 35px;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        transition: 0s;
+        opacity: 0;
+        pointer-events: none;
+        display: block;
+    }
+    .sidebar.active ul li .tooltip {
+        display: none;
+    }
+    .sidebar ul li:hover .tooltip {
+        transition: all .5s ease;
+        opacity: 1;
+        top: 50%;
+    }
+    .sidebar ul li a {
+        color: #3a5698;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        border-radius: 12px;
+        white-space: nowrap;
+    }
+    .sidebar ul li a:hover {
+        color: #5F78B3;
+        background: #E6CC91;
+    }
+    .sidebar ul li i {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar ul li a i, .sidebar ul li a span {
+        font-size: 20px;
+    }
+    .sidebar .links_name {
+        opacity: 0;
+        pointer-events: none;
+        transition: all .5s ease;
+    }
+    .sidebar.active .links_name {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .sidebar .profile_content{
+        position: absolute;
+        color: #E6CC91;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    .sidebar .profile_content .profile {
+        position: relative;
+        padding: 10px 6px;
+        height: 60px;
+        background: none;
+        transition: all .4s ease;
+    }
+    .sidebar.active .profile_content .profile {
+        background: #3a5698;
+    }
+    .profile_content .profile .profile_details {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    .sidebar.active .profile .profile_details {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .profile .profile_details img {
+        height: 45px;
+        width: 45px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+    .profile .profile_details .name_job {
+        margin-left: 10px;
+    }
+    .profile .profile_details .name {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+    .profile .profile_details .job {
+        font-size: 1.3rem;
+    }
+    .profile #log_out {
+        position: absolute;
+        left: 50%;
+        bottom: 1.3rem;
+        transform: translateX(-50%);
+        min-width: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all .4s ease;
+        background: #3a5698;
+    }
+    .sidebar.active .profile #log_out {
+        left: 88%;
+        background: none;
+    }
+    .bodyPage {
+        position: absolute;
+        height: 100%;
+        width: calc(100% - 5rem);
+        left: 5rem;
+        transition: all .5s ease;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .sidebar.active ~ .bodyPage {
+        width: calc(100% - 260px);
+        left: 260px;
+    }
+    /*
+        Below is all Login page CSS
+    */
+    .login {
+        background-color: #E6CC91;
+        color: #3a5698;
+        margin: auto;
+        width: 50%;
+        height: 25rem;
+        border-radius: 12px;
+    }
+    .login h1 {
+        font-size: 3.5vw;
+        text-align: center;
+    }
+    .login section {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 40%;
+        height: 20%;
+    }
+    .login section label {
+        font-size: 2vw;
+        text-align: center;
+    }
+    .login section input {
+        font-size: 1.3vw;
+        border-radius: 12px;
+        border: #3a5698 solid 2.5px;
+        height: 2rem;
+    }
+    #loginStyle {
+        width: 100%;
+        display:block;
+        position:relative;
+        text-align: center;
+        height: auto;
+    }
+    #loginStyle button {
+        background: #3a5698;
+        border: 5px solid #3a5698;
+        margin-top: 2rem;
+        border-radius: 12px;
+        cursor: pointer;
+        max-width: 50%;
+        max-height: 50%;
+        width: 10vw;
+        height: 10vh;
+        font-size: 2.5vw;
+        text-align: center;
+        color: #E6CC91;
+    }
+    #loginStyle button:hover {
+        color: #3a5698;
+        background: #E6CC91;
+    }
+    .login p {
+        font-size: 1.5vw;
+    }
+    .login p a {
+        color: #3a5698;
+    }
+    /* 
+        Media quorey used for tablet & phone
+    */
+    @media only screen and (max-width: 915px) {
+        #loginStyle button {
+            margin: 0 0 0 0;
+        }
+    }
+</style>
+
+
+
+<!-- 
+~~~~~~~~~~~~~~~~~~~~~~~
+    Navbar below
+~~~~~~~~~~~~~~~~~~~~~~~
+ -->
+
+<div class="sidebar">
+    <div class="logo_content">
+        <div class="logo">
+            <i class='bx bxs-grid'></i>
+            <div class="logo_name">Template</div>
+        </div>
+        <i class="bx bx-menu" id="btn" ></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/">
+                <i class='bx bx-home-alt-2'></i>
+                <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+        </li>
+        <li>
+            <a href="/about">
+                <i class='bx bx-group'></i>
+                <span class="links_name">About Us</span>
+            </a>
+            <span class="tooltip">About Us</span>
+        </li>
+        <li>
+            <a href="/contact">
+                <i class='bx bxs-contact'></i>
+                <span class="links_name">Contact Us</span>
+            </a>
+            <span class="tooltip">Contact Us</span>
+        </li>
+        <li>
+            <a href="/login">
+                <i class='bx bx-log-in'></i>
+                <span class="links_name">Login</span>
+            </a>
+            <span class="tooltip">Login</span>
+        </li>
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <img src="image.webp" alt="person owner image">
+                <div class="name_job">
+                    <div class="name">Fname Lname</div>
+                    <div class="job">company/work name</div>
+                </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="bodyPage">
+    <form class="login">
+        <h1>Template Login</h1>
+        <section>
+            <label for="loginEmail">Username</label>
+            <input type="text" id="loginEmail" name="username">
+        </section>
+        <section>
+            <label for="loginPass">Password</label>
+            <input type="password" id="loginPass" name="password" title="password">
+        </section>
+        <div id="loginStyle">
+            <button type="submit">Login</button>
+        </div>
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </form>
+</div>
+
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function() {
+        sidebar.classList.toggle("active");
+    }
+</script>
